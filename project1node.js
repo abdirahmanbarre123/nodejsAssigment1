@@ -1,44 +1,162 @@
 
 
-function calculateTotalTarget(startDate, endDate, totalTarget) {
+// function calculateTotalTarget(startDate, endDate, totalTarget) {
+//     const start = new Date(startDate);
+//     const end = new Date(endDate);
+//     let daysExcludingFridays = [];
+//     let daysWorkedExcludingFridays = [];
+//     let monthlyTargets = [];
+//     let totalDays = 0;
+//     // Iterate through each day in the date range
+//     for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+//       if (d.getDay() !== 5) { // 5 represents Friday
+//         const month = d.getMonth();
+//         if (!daysExcludingFridays[month]) {
+//           daysExcludingFridays[month] = 0;
+//           daysWorkedExcludingFridays[month] = 0;
+//         }   
+//         daysExcludingFridays[month]++;
+//         daysWorkedExcludingFridays[month]++;
+//         totalDays++;
+//       }
+//     }
+//     // Calculate daily target
+//     const dailyTarget = totalTarget / totalDays;
+//     // Calculate monthly targets
+//     for (let i = 0; i < daysExcludingFridays.length; i++) {
+//       if (daysExcludingFridays[i]) {
+//         monthlyTargets[i] = +(daysExcludingFridays[i] * dailyTarget).toFixed(2);
+//       }
+//     }
+//     // Remove empty months
+//     daysExcludingFridays = daysExcludingFridays.filter(Boolean);
+//     daysWorkedExcludingFridays = daysWorkedExcludingFridays.filter(Boolean);
+//     monthlyTargets = monthlyTargets.filter(Boolean);
+//     return {
+//       daysExcludingFridays,
+//       daysWorkedExcludingFridays,
+//       monthlyTargets,
+//       totalTarget: Math.round(dailyTarget * totalDays)
+//     };
+//   }
+//   // Example usage:
+//   const result = calculateTotalTarget('2024-01-01', '2024-03-31', 435);
+//   console.log(result);
+// function calculateTotalTarget(startDate, endDate, totalTarget) {
+//     const start = new Date(startDate);
+//     const end = new Date(endDate);
+//     let daysExcludingFridays = [];
+//     let daysWorkedExcludingFridays = [];
+//     let monthlyTargets = [];
+//     let totalDays = 0;
+//     // Iterate through each day in the date range
+//     for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+//       if (d.getDay() !== 5) { // 5 represents Friday
+//         const month = d.getMonth();
+//         if (!daysExcludingFridays[month]) {
+//           daysExcludingFridays[month] = 0;
+//           daysWorkedExcludingFridays[month] = 0;
+//         }   
+//         daysExcludingFridays[month]++;
+//         daysWorkedExcludingFridays[month]++;
+//         totalDays++;
+//       }
+//     }
+//     // Calculate daily target
+//     const dailyTarget = totalTarget / totalDays;
+//     // Calculate monthly targets
+//     for (let i = 0; i < daysExcludingFridays.length; i++) {
+//       if (daysExcludingFridays[i]) {
+//         monthlyTargets[i] = +(daysExcludingFridays[i] * dailyTarget).toFixed(2);
+//       }
+//     }
+//     // Remove empty months
+//     daysExcludingFridays = daysExcludingFridays.filter(Boolean);
+//     daysWorkedExcludingFridays = daysWorkedExcludingFridays.filter(Boolean);
+//     monthlyTargets = monthlyTargets.filter(Boolean);
+//     return {
+//       daysExcludingFridays,
+//       daysWorkedExcludingFridays,
+//       monthlyTargets,
+//       totalTarget: Math.round(dailyTarget * totalDays)
+//     };
+//   }
+//   // Example usage:
+// //   const result = calculateTotalTarget('2024-01-01', '2024-03-31', 435);
+// //   console.log(result);
+// function calculateTotalTarget(startDate, endDate, totalTarget) {
+//     const start = new Date(startDate);
+//     const end = new Date(endDate);
+//     let daysExcludingFridays = [];
+//     let daysWorkedExcludingFridays = [];
+//     let monthlyTargets = [];
+//     let totalDays = 0;
+//     // Iterate through each day in the date range
+//     for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+//       if (d.getDay() !== 5) { // 5 represents Friday
+//         const month = d.getMonth();
+//         if (!daysExcludingFridays[month]) {
+//           daysExcludingFridays[month] = 0;
+//           daysWorkedExcludingFridays[month] = 0;
+//         }   
+//         daysExcludingFridays[month]++;
+//         daysWorkedExcludingFridays[month]++;
+//         totalDays++;
+//       }
+//     }
+//     // Calculate daily target
+//     const dailyTarget = totalTarget / totalDays;
+//     // Calculate monthly targets
+//     for (let i = 0; i < daysExcludingFridays.length; i++) {
+//       if (daysExcludingFridays[i]) {
+//         monthlyTargets[i] = +(daysExcludingFridays[i] * dailyTarget).toFixed(2);
+//       }
+//     }
+//     // Remove empty months
+//     daysExcludingFridays = daysExcludingFridays.filter(Boolean);
+//     daysWorkedExcludingFridays = daysWorkedExcludingFridays.filter(Boolean);
+//     monthlyTargets = monthlyTargets.filter(Boolean);
+//     return {
+//       daysExcludingFridays,
+//       daysWorkedExcludingFridays,
+//       monthlyTargets,
+//       totalTarget: Math.round(dailyTarget * totalDays)
+//     };
+//   }
+//   // Example usage:
+//   const result = calculateTotalTarget('2024-01-01', '2024-03-31', 365);
+//   console.log(result);
+function calculateTotalTarget(startDate, endDate, monthlyTarget) {
     const start = new Date(startDate);
     const end = new Date(endDate);
     let daysExcludingFridays = [];
-    let daysWorkedExcludingFridays = [];
     let monthlyTargets = [];
-    let totalDays = 0;
-    // Iterate through each day in the date range
+    let totalTarget = 0;
     for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
-      if (d.getDay() !== 5) { // 5 represents Friday
-        const month = d.getMonth();
-        if (!daysExcludingFridays[month]) {
-          daysExcludingFridays[month] = 0;
-          daysWorkedExcludingFridays[month] = 0;
-        }   
-        daysExcludingFridays[month]++;
-        daysWorkedExcludingFridays[month]++;
-        totalDays++;
-      }
+        if (d.getDay() !== 5) { 
+            const month = d.getMonth(); 
+            if (!daysExcludingFridays[month]) {
+                daysExcludingFridays[month] = 0;
+            }
+            daysExcludingFridays[month]++; 
+        }
     }
-    // Calculate daily target
-    const dailyTarget = totalTarget / totalDays;
-    // Calculate monthly targets
     for (let i = 0; i < daysExcludingFridays.length; i++) {
-      if (daysExcludingFridays[i]) {
-        monthlyTargets[i] = +(daysExcludingFridays[i] * dailyTarget).toFixed(2);
-      }
+        if (daysExcludingFridays[i]) {
+            if (i === daysExcludingFridays.length - 1 && new Date(end).getDate() < 28) {
+                const proportion = daysExcludingFridays[i] / new Date(start.getFullYear(), i + 1, 0).getDate();
+                monthlyTargets[i] = +(monthlyTarget * proportion).toFixed(3);
+            } else {
+                monthlyTargets[i] = monthlyTarget; 
+            }
+            totalTarget += monthlyTargets[i]; 
+        }
     }
-    // Remove empty months
-    daysExcludingFridays = daysExcludingFridays.filter(Boolean);
-    daysWorkedExcludingFridays = daysWorkedExcludingFridays.filter(Boolean);
-    monthlyTargets = monthlyTargets.filter(Boolean);
     return {
-      daysExcludingFridays,
-      daysWorkedExcludingFridays,
-      monthlyTargets,
-      totalTarget: Math.round(dailyTarget * totalDays)
+        daysExcludingFridays,
+        monthlyTargets,
+        totalTarget: +totalTarget.toFixed(3) 
     };
   }
-  // Example usage:
-  const result = calculateTotalTarget('2024-01-01', '2024-03-31', 435);
+  const result = calculateTotalTarget('2024-03-01', '2024-05-31', 500);
   console.log(result);
